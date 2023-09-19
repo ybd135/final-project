@@ -1,9 +1,10 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: mongodb-deployment
+  name: mongodb
 spec:
-  replicas: 1
+  serviceName: mongodb
+  replicas: 1  # Adjust the number of replicas as needed
   selector:
     matchLabels:
       app: mongodb
@@ -14,6 +15,18 @@ spec:
     spec:
       containers:
         - name: mongodb
-          image: mongo:latest
+          image: mongo:latest  # You can use a specific version like mongo:4.4 if needed
           ports:
             - containerPort: 27017
+          volumeMounts:
+            - name: mongodb-data
+              mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: mongodb-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: standard  # Use an appropriate storage class
+        resources:
+          requests:
+            storage: 1Gi  # Adjust the storage size as needed
