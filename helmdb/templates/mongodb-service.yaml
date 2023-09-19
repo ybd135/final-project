@@ -1,12 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongodb-service
+  name: mongodb
 spec:
   selector:
     app: mongodb
   ports:
     - protocol: TCP
-      port: 27017  # The port on which MongoDB is running
-      targetPort: 27017  # The port your MongoDB Pod is listening on
-  type: LoadBalancer  # Use LoadBalancer to create an external Load Balancer
+      port: 27017
+  type: LoadBalancer
