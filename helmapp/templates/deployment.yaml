@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yahelapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: yahelapp
+  template:
+    metadata:
+      labels:
+        app: yahelapp
+    spec:
+      containers:
+      - name: yahelapp
+        image: yahelbd/my-app:latest
+        ports:
+        - containerPort: 9000
