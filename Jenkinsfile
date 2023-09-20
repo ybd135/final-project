@@ -28,8 +28,8 @@ spec:
                     script {
                         sh 'dockerd &'
                         sh 'sleep 5'
-                        sh 'docker build -t yahelbd/profile-app:latest .'
-                        sh 'docker run yahelbd/profile-app:latest test.py'
+                        sh 'docker build -t yahelbd/my-app:latest .'
+                        sh 'docker run yahelbd/my-app:latest test.py'
                         echo 'passed test'
                     }
                 }
