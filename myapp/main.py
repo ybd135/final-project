@@ -14,5 +14,5 @@ def index():
     # Render the HTML template and pass the list of URLs to it
     return render_template("index.html", urls=urls)
 
-if __name__ == "__main__":
-    app.run(port=9000, debug=True)
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=9000, debug=True)
