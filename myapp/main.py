@@ -15,7 +15,7 @@ def index():
     urls = [doc["url"] for doc in collection.find()]
 
     # Render the HTML template with the URLs
-    return render_template('index.html', headline='List of URLs', urls=urls)
+    return render_template('index.html', headline='List of Serials', urls=urls)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=9000, debug=True)
