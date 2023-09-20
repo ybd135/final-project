@@ -4,9 +4,9 @@ app = Flask(__name__)
 
 # Sample list of URLs (you can replace this with your own list)
 urls = [
-    "https://www.example.com",
+    "https://parahumans.wordpress.com/",
     "https://www.google.com",
-    "https://www.github.com",
+    "https://practicalguidetoevil.wordpress.com/",
 ]
 
 @app.route("/")
