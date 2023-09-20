@@ -28,8 +28,8 @@ spec:
                     script {
                         sh 'dockerd &'
                         sh 'sleep 5'
-                        sh 'docker build -t milk49/profile-app:latest .'
-                        sh 'docker run milk49/profile-app:latest test.py'
+                        sh 'docker build -t yahelbd/profile-app:latest .'
+                        sh 'docker run yahelbd/profile-app:latest test.py'
                         echo 'passed test'
                     }
                 }
@@ -40,10 +40,10 @@ spec:
             steps {
                 container('dind') {
                     script {
-                        withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                             sh '''
                             echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                            docker push milk49/profile-app:latest
+                            docker push yahelbd/profile-app:latest
                             '''
                         }
                     }
@@ -54,13 +54,13 @@ spec:
             steps {
                 container('dind') {
                     script {
-                        withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                             sh '''
                             echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
                             helm package helmapp
-                            helm push helmapp-0.1.0.tgz  oci://registry-1.docker.io/milk49
+                            helm push helmapp-0.1.0.tgz  oci://registry-1.docker.io/yahelbd
                             helm package helmdb
-                            helm push helmdb-0.1.0.tgz  oci://registry-1.docker.io/milk49
+                            helm push helmdb-0.1.0.tgz  oci://registry-1.docker.io/yahelbd
                             '''
                         }
                     }
@@ -71,7 +71,7 @@ spec:
        post {
         failure {
             emailext (
-                to: 'milk49@walla.co.il',
+                to: 'ybd135@gmail.com',
                 subject: "Failed: ${currentBuild.fullDisplayName}",
                 body: "The build failed. Please check the Jenkins build log for details.",
                 attachLog: true,
