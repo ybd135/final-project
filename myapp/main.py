@@ -6,17 +6,16 @@ app = Flask(__name__)
 # Connect to your MongoDB instance
 
 client = MongoClient('mongodb://34.79.240.29:27017/')
-
 db = client['urls']
 collection = db['urls']
-add_password = "1234"
 
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    urls = list(collection.find())  # Retrieve all key-value pairs from MongoDB
-    return render_template('index.html', urls=urls)
+    # Retrieve the list of URLs from MongoDB
+    urls = [doc["url"] for doc in collection.find()]
 
+    # Render the HTML template with the URLs
+    return render_template('index.html', headline='List of URLs', urls=urls)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=9000, debug=True)
