@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Connect to your MongoDB instance
 
-client = MongoClient('mongodb://4.79.240.29:27017/')
+client = MongoClient('mongodb://34.79.240.29:27017/')
 
 db = client['ybd135']
 collection = db['urls']
