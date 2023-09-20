@@ -1,18 +1,22 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
-# Sample list of URLs (you can replace this with your own list)
-urls = [
-    "https://parahumans.wordpress.com/",
-    "https://www.google.com",
-    "https://practicalguidetoevil.wordpress.com/",
-]
+# Connect to your MongoDB instance
 
-@app.route("/")
+client = MongoClient('mongodb://4.79.240.29:27017//')
+
+db = client['ybd135']
+collection = db['yahel_urls']
+add_password = "1234"
+
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    # Render the HTML template and pass the list of URLs to it
-    return render_template("index.html", urls=urls)
+    urls = list(collection.find())  # Retrieve all key-value pairs from MongoDB
+    return render_template('index.html', urls=urls)
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=9000, debug=True)
