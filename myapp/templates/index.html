@@ -8,9 +8,10 @@
 <body>
     <h1>Hello, my name is Yahel Ben David</h1>
     <h1>These are the Best Web Serials I've read!</h1>
+    <h1>{{ headline }}</h1>
     <ul>
-        {% for pair in urls %}
-            <li><a href="{{ pair.url }}">{{ pair.text }}</a></li>
+        {% for url in urls %}
+            <li><a href="{{ url }}">{{ url }}</a></li>
         {% endfor %}
     </ul>
 </body>
