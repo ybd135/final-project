@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>List of URLs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Web Serials</title>
 </head>
 <body>
-    <h1>List of URLs</h1>
+    <h1>Hello, my name is Yahel Ben David</h1>
+    <h1>These are the Best Web Serials I've read!</h1>
     <ul>
-        {% for url in urls %}
-        <li><a href="{{ url }}" target="_blank">{{ url }}</a></li>
+        {% for pair in urls %}
+            <li><a href="{{ pair.url }}">{{ pair.text }}</a></li>
         {% endfor %}
     </ul>
 </body>
