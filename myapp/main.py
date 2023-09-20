@@ -8,7 +8,7 @@ app = Flask(__name__)
 client = MongoClient('mongodb://4.79.240.29:27017/')
 
 db = client['ybd135']
-collection = db['yahel_urls']
+collection = db['urls']
 add_password = "1234"
 
 
