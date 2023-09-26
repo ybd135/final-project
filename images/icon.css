@@ -1,0 +1,7 @@
+/* Replace the Jenkins logo with your custom logo */
+.jenkins-logo img {
+    content: url('path/to/your/custom-logo.png');
+    /* Set the width and height of your custom logo */
+    width: 150px;
+    height: 40px;
+}
