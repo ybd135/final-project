@@ -16,4 +16,4 @@ spec:
       - name: yahelapp
         image: yahelbd/my-app:latest
         ports:
-        - containerPort: 9000
+        - containerPort: 2625
