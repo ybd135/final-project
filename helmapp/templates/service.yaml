@@ -8,5 +8,5 @@ spec:
   type: LoadBalancer
   ports:
   - name: yahelappsvc
-    port: 9000
-    targetPort: 9000
+    port: 2625
+    targetPort: 2625
