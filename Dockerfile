@@ -10,8 +10,8 @@ COPY myapp /myapp
 # Install needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-# Make port 9000 available to the world outside this container
-EXPOSE 9000
+# Make port 2625 available to the world outside this container
+EXPOSE 2625
 
 CMD ["main.py"]
 # Run main.py when the container launches
